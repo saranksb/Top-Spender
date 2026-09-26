@@ -32,10 +32,10 @@ const EN = {
   'ใส่ชื่อผู้ใช้และรหัสผ่าน': 'Enter your username and password', 'รหัสผ่านสองช่องไม่ตรงกัน': 'The two passwords don\'t match',
   'กรุณาเข้าสู่ระบบอีกครั้ง': 'Please log in again',
   // ลืมรหัสผ่าน / อีเมลกู้คืนบัญชี
-  'ลืมรหัสผ่าน?': 'Forgot password?', 'กลับไปเข้าสู่ระบบ': 'Back to login', 'ชื่อผู้ใช้หรืออีเมล': 'Username or email',
+  'ลืมรหัสผ่าน?': 'Forgot password?', 'กลับไปเข้าสู่ระบบ': 'Back to login', 'อีเมล': 'Email',
   'รหัสยืนยัน (จากอีเมล)': 'Verification code (from email)', 'ส่งรหัสยืนยัน': 'Send code', 'ตั้งรหัสผ่านใหม่': 'Reset password',
   'อีเมล (ใช้กู้คืนรหัสผ่าน)': 'Email (for account recovery)', 'ใส่อีเมลสำหรับกู้คืนรหัสผ่าน': 'Enter an email for account recovery',
-  'ใส่ชื่อผู้ใช้หรืออีเมล': 'Enter your username or email', 'ใส่รหัสยืนยันและรหัสผ่านใหม่': 'Enter the verification code and new password',
+  'ใส่อีเมล': 'Enter your email', 'ใส่รหัสยืนยันและรหัสผ่านใหม่': 'Enter the verification code and new password',
   'ส่งรหัสไปที่ {x} แล้ว': 'Code sent to {x}',
   'ขอรหัสบ่อยเกินไป ลองใหม่ในอีก 10 นาที': 'Too many requests. Try again in 10 minutes.',
   'ไม่พบอีเมลนี้ในระบบ': 'No account with this email', 'ไม่พบชื่อผู้ใช้นี้': 'No account with this username',

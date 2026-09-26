@@ -11,9 +11,9 @@ function setGateMode(m) {
   $('#gForgot').textContent = t(m === 'forgot' ? 'กลับไปเข้าสู่ระบบ' : 'ลืมรหัสผ่าน?');
   $('#gUser').disabled = false;
   // เข้าโหมดลืมรหัสผ่าน ต้องเริ่มจากช่องว่างเปล่าเสมอ ไม่เอาชื่อผู้ใช้เดิมที่ค้างอยู่มาเติมให้
-  if (m === 'forgot') $('#gUser').value = '';
-  else if (leavingForgot) $('#gUser').value = ME.username || '';
-  $('#gUserLbl').textContent = t(m === 'forgot' ? 'ชื่อผู้ใช้หรืออีเมล' : 'ชื่อผู้ใช้');
+  if (m === 'forgot') { $('#gUser').value = ''; $('#gUser').type = 'email'; $('#gUser').autocomplete = 'email'; }
+  else { if (leavingForgot) $('#gUser').value = ME.username || ''; $('#gUser').type = 'text'; $('#gUser').autocomplete = 'username'; }
+  $('#gUserLbl').textContent = t(m === 'forgot' ? 'อีเมล' : 'ชื่อผู้ใช้');
   $('#gPassWrap').hidden = false;
   $('#gPass').type = 'password'; $('#gPass').removeAttribute('inputmode');
   $('#gPassLbl').textContent = t('รหัสผ่าน');
@@ -23,7 +23,7 @@ function setGateMode(m) {
   $('#gGo').textContent = t(m === 'signup' ? 'สมัครและเข้าใช้งาน' : m === 'forgot' ? 'ส่งรหัสยืนยัน' : 'เข้าสู่ระบบ');
   if (m === 'forgot') applyForgotStep();
 }
-// โหมด "ลืมรหัสผ่าน" มี 2 ขั้น: 1) กรอกชื่อผู้ใช้/อีเมล 2) กรอกรหัสยืนยันที่ได้ทางอีเมล + รหัสผ่านใหม่
+// โหมด "ลืมรหัสผ่าน" มี 2 ขั้น: 1) กรอกอีเมล 2) กรอกรหัสยืนยันที่ได้ทางอีเมล + รหัสผ่านใหม่
 // ใช้ช่อง gPass/gPass2 เดิมซ้ำ (แค่เปลี่ยนป้ายกำกับ) แทนที่จะเพิ่มฟอร์มใหม่
 function applyForgotStep() {
   $('#gUser').disabled = GSTEP === 2;
@@ -59,7 +59,7 @@ $('#gGo').onclick = async () => {
   if (GMODE === 'forgot') {
     if (GSTEP === 1) {
       const id = $('#gUser').value.trim();
-      if (!id) return msg(t('ใส่ชื่อผู้ใช้หรืออีเมล'));
+      if (!id) return msg(t('ใส่อีเมล'));
       busy(true); msg('');
       try {
         const r = await call(url, { fn: 'requestReset', args: [id] });
