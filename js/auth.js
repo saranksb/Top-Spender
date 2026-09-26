@@ -1,6 +1,7 @@
 // หน้าเข้าสู่ระบบ/สมัคร/ลืมรหัสผ่าน (gate)
 let GMODE = 'login', GSTEP = 1, GFID = '';
 function setGateMode(m) {
+  const leavingForgot = GMODE === 'forgot' && m !== 'forgot';
   GMODE = m; GSTEP = 1;
   $('#gMode').hidden = m === 'forgot';
   $$('#gMode button').forEach(b => b.classList.toggle('on', b.dataset.m === m));
@@ -9,6 +10,9 @@ function setGateMode(m) {
   $('#gForgot').hidden = m === 'signup';
   $('#gForgot').textContent = t(m === 'forgot' ? 'กลับไปเข้าสู่ระบบ' : 'ลืมรหัสผ่าน?');
   $('#gUser').disabled = false;
+  // เข้าโหมดลืมรหัสผ่าน ต้องเริ่มจากช่องว่างเปล่าเสมอ ไม่เอาชื่อผู้ใช้เดิมที่ค้างอยู่มาเติมให้
+  if (m === 'forgot') $('#gUser').value = '';
+  else if (leavingForgot) $('#gUser').value = ME.username || '';
   $('#gUserLbl').textContent = t(m === 'forgot' ? 'ชื่อผู้ใช้หรืออีเมล' : 'ชื่อผู้ใช้');
   $('#gPassWrap').hidden = false;
   $('#gPass').type = 'password'; $('#gPass').removeAttribute('inputmode');
